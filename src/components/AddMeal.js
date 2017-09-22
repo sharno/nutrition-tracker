@@ -84,14 +84,27 @@ export default class AddMeal extends Component {
     }
 
     handleImageUpload = (e, { value }) => {
-        console.log(value, e.target.files)
+        const validImageTypes = ["image/gif", "image/jpeg", "image/png"]
+        
         let file = e.target.files[0]
-        if (file.size > 500000) {
+        console.log(file)
+        if (file.size > 2000000) {
             this.setState({ error: "The image size is so big, choose an image that's less than 500Kb" })
-        } else {
-            this.setState({ error: "" })
+            return
+        } else if (!validImageTypes.includes(file["type"])) {
+            this.setState({ error: "This is not a valid image file please choose another image" })
+            return
         }
+        this.setState({ error: "" })
 
+        let reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+            this.setState({ img: reader.result })
+        }
+        reader.onerror = (error) => {
+            console.log('Error: ', error)
+        }
     }
 
     render() {
