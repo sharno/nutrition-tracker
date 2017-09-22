@@ -1,11 +1,12 @@
 import React from 'react'
-import { Container, Item } from 'semantic-ui-react'
+import { Container, Item, Label } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
 import Meal from './Meal'
 
 const MealsList = ({ meals }) => (
     <Container>
+        <Label ribbon>{meals.length === 0 ? "You didn't have any meals so far today :(" : "Bon appetit"}</Label>
         <Item.Group>
             {meals.slice(0).reverse().map(meal => (
                 <Meal key={meal.time} {...meal} />

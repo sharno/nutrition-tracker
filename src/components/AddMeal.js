@@ -103,6 +103,7 @@ export default class AddMeal extends Component {
             this.setState({ img: reader.result })
         }
         reader.onerror = (error) => {
+            this.setState({ error: "An error happened while loading the image, please choose another image" })
             console.log('Error: ', error)
         }
     }
