@@ -1,6 +1,7 @@
 {
   "name": "nutrition-tracker",
   "version": "0.1.0",
+  "homepage": "http://sharno.github.io/nutrition-tracker",
   "private": true,
   "dependencies": {
     "moment": "^2.18.1",
@@ -17,10 +18,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "enzyme": "^2.9.1",
+    "gh-pages": "^1.0.0",
     "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1"
   }
