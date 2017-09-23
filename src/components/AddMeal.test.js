@@ -1,31 +1,22 @@
 import React from "react"
-import { mount } from "enzyme"
-import {Segment} from "semantic-ui-react"
+import { shallow } from "enzyme"
+import { Form } from "semantic-ui-react"
 
 import AddMeal from "./AddMeal"
 
-describe("AddMeal", () => {
-    let props;
-    let mountedAddMeal
-    const addMeal = () => {
-        if (!mountedAddMeal) {
-            mountedAddMeal = mount(
-                <AddMeal {...props} />
-            )
-        }
-        return mountedAddMeal
-    }
+describe("<AddMeal />", () => {
+    let props
+    let wrapper
 
     beforeEach(() => {
         props = {
             onAddMealClick: () => {},
         }
-        mountedAddMeal = undefined
+        wrapper = shallow(<AddMeal {...props} />)
     })
 
     // All tests will go here
-    it("always renders segments", () => {
-        const segments = addMeal().find(Segment)
-        expect(segments.length).toBeGreaterThan(0)
-    });
-});
+    it("always renders 2 Form.Input", () => {
+        expect(wrapper.find(Form.Input)).toHaveLength(2)
+    })
+})

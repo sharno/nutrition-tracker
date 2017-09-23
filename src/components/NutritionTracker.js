@@ -11,30 +11,17 @@ import NutritionHistory from './NutritionHistory'
 
 class NutritionTracker extends Component {
     componentWillMount() {
-        if (! moment().startOf("day").isSame(this.props.date)) {
-            this.props.onChangeDate(moment().format())
-        }
-    }
-
-    componentDidMount() {
-        setTimeout(
-            () => {
-                this.handleChangeDate()
-            },
-            moment().endOf("day").add(1, "second").diff(moment())
-            // refreshRate
-        )
+        this.handleChangeDate()
     }
 
     handleChangeDate = () => {
-        this.props.onChangeDate(moment().format())
-        // this.props.onChangeDate(moment(this.props.date).add(1, "day").format())
+        if (!moment().startOf("day").isSame(this.props.date)) {
+            // if the day of the machine is the same day saved in the state
+            this.props.onChangeDate(moment().startOf("day").format())
+        }
         setTimeout(
-            () => {
-                this.handleChangeDate()
-            },
+            this.handleChangeDate,
             moment().endOf("day").add(1, "second").diff(moment())
-            // refreshRate
         )
     }
 
@@ -44,8 +31,7 @@ class NutritionTracker extends Component {
                 <BrowserRouter>
                     <div>
                         <Route path="/" render={() => <TopMenu date={this.props.date} />} />
-                        {/* <TopMenu path="/" date={this.props.date} /> */}
-                        <Route exact path="/" component={Home} />
+                        <Route exact path="/" render={() => <Home {...this.props} />} />
                         <Route exact path="/history" render={() => <NutritionHistory prevDaysMeals={this.props.prevDaysMeals} />} />
                     </div>
                 </BrowserRouter>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header, List, Icon, Label } from 'semantic-ui-react'
-
+import PropTypes from 'prop-types'
 
 const achievementsDesc = {
     meal: "Eat 6 meals.",
@@ -14,7 +14,7 @@ const achievementsDesc = {
 const Achievemnets = ({ achievements }) => (
     <div>
         <Header as='h3'>Achievemnets</Header>
-        <List>
+        <List divided>
             {achievements.map(a => (
                 <List.Item key={a.name}>
                     <Icon color={a.consumed >= a.target ? ((a.consumed > a.target && a.warn) ? 'yellow' : 'green') : 'grey'} name='trophy' size='large' />
@@ -28,5 +28,16 @@ const Achievemnets = ({ achievements }) => (
         </List>
     </div>
 )
+
+Achievemnets.propTypes = {
+    achievements: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            consumed: PropTypes.number.isRequired,
+            target: PropTypes.number.isRequired,
+            warn: PropTypes.bool.isRequired,
+        }).isRequired
+    ).isRequired
+}
 
 export default Achievemnets

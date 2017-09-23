@@ -1,20 +1,20 @@
 import { connect } from 'react-redux'
 
-import { changeDate } from '../actions'
+import { changeDate, addMeal } from '../actions'
 import NutritionTracker from '../components/NutritionTracker'
 
 const mapStateToProps = state => {
-    return {
-        date: state.date,
-        prevDaysMeals: state.prevDaysMeals,
-    }
+    return { ...state }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onChangeDate: date => {
             dispatch(changeDate(date))
-        }
+        },
+        onAddMeal: meal => {
+            dispatch(addMeal(meal))
+        },
     }
 }
 

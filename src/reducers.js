@@ -1,8 +1,7 @@
 import * as actions from './actions'
-import moment from 'moment'
 
 const initialState = {
-    date: moment().startOf("day").format(),
+    date: "",
     meals: [
         // {
         //     time: "2017-09-21 09:30:26",
