@@ -1,8 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { mount } from "enzyme"
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+import nutritionTracker from './reducers'
 import App from './App'
 
+let store = createStore(nutritionTracker)
+
 it('renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<App />, div)
+    const app = mount(
+        <Provider store={store}>
+            <App />
+        </Provider>
+    )
 })
