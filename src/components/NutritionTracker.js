@@ -1,57 +1,55 @@
 import React, { Component } from 'react'
-import { Container, Grid, Segment } from 'semantic-ui-react'
+import { BrowserRouter, Route } from 'react-router-dom'
 import moment from 'moment'
 
-import AddMealContainer from '../containers/AddMealContainer'
-import MealsListContainer from '../containers/MealsListContainer'
-import AchievementsContainer from '../containers/AchievementsContainer'
 import TopMenu from './TopMenu'
+import Home from './Home'
+import NutritionHistory from './NutritionHistory'
+
+// just for testing purposes 
+// const refreshRate = 10000
 
 class NutritionTracker extends Component {
+    componentWillMount() {
+        if (! moment().startOf("day").isSame(this.props.date)) {
+            this.props.onChangeDate(moment().format())
+        }
+    }
+
     componentDidMount() {
         setTimeout(
             () => {
                 this.handleChangeDate()
             },
-            // moment().endOf("day").add(1, "second").diff(moment())
-            5000
+            moment().endOf("day").add(1, "second").diff(moment())
+            // refreshRate
         )
     }
 
     handleChangeDate = () => {
-        // this.props.onChangeDate(moment().format())
-        this.props.onChangeDate(moment(this.props.date).add(1, "day").format())
+        this.props.onChangeDate(moment().format())
+        // this.props.onChangeDate(moment(this.props.date).add(1, "day").format())
         setTimeout(
             () => {
                 this.handleChangeDate()
             },
-            // moment().endOf("day").add(1, "second").diff(moment())
-            5000
+            moment().endOf("day").add(1, "second").diff(moment())
+            // refreshRate
         )
     }
 
     render() {
         return (
             <div>
-                <TopMenu date={this.props.date} />
-                <Grid container columns={2}>
-                    <Grid.Row style={{ marginTop: '7em' }}>
-                        <Container textAlign='center'>
-                            <AddMealContainer />
-                        </Container>
-                    </Grid.Row>
+                <BrowserRouter>
+                    <div>
+                        <Route path="/" render={() => <TopMenu date={this.props.date} />} />
+                        {/* <TopMenu path="/" date={this.props.date} /> */}
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/history" render={() => <NutritionHistory prevDaysMeals={this.props.prevDaysMeals} />} />
+                    </div>
+                </BrowserRouter>
 
-                    <Grid.Row>
-                        <Grid.Column width={10}>
-                            <MealsListContainer />
-                        </Grid.Column>
-                        <Grid.Column width={6}>
-                            <Segment>
-                                <AchievementsContainer />
-                            </Segment>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
             </div>
         )
     }

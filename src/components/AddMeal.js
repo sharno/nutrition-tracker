@@ -44,7 +44,8 @@ export default class AddMeal extends Component {
         }
     }
 
-    handleAddMeal = () => {
+    handleAddMeal = (e) => {
+        e.preventDefault()
         if (!this.state.name) {
             this.setState({ error: "Please enter a name for this meal" })
             return

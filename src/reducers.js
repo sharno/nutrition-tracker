@@ -25,7 +25,12 @@ const initialState = {
         { name: "carb", consumed: 0, target: 2, warn: true, },
         { name: "drink", consumed: 0, target: 4, warn: false, },
     ],
-    prevDaysMeals: {},
+    prevDaysMeals: [
+        // {date: "2017-09-22T00:00:00-04:00", meals: [{"name":"Breakfast","time":"2017-09-22T22:47:50-04:00","img":"","serving":{"vegetable":1,"protein":0,"fat":0,"carb":0,"drink":0}}]},
+        // {date: "2017-09-23T00:00:00-04:00", meals: [{"name":"Breakfast","time":"2017-09-23T22:47:50-04:00","img":"","serving":{"vegetable":1,"protein":0,"fat":0,"carb":0,"drink":0}}]},
+        // {date: "2017-09-24T00:00:00-04:00", meals: [{"name":"Breakfast","time":"2017-09-24T22:47:50-04:00","img":"","serving":{"vegetable":1,"protein":0,"fat":0,"carb":0,"drink":0}}]},
+        // {date: "2017-09-25T00:00:00-04:00", meals: [{"name":"Breakfast","time":"2017-09-25T22:47:50-04:00","img":"","serving":{"vegetable":1,"protein":0,"fat":0,"carb":0,"drink":0}}, {"name":"Breakfast","time":"2017-09-25T23:47:50-04:00","img":"","serving":{"vegetable":1,"protein":0,"fat":0,"carb":0,"drink":0}}]},
+    ],
 }
 
 export default function nutritionTrackerApp(state = initialState, action) {
@@ -44,14 +49,13 @@ export default function nutritionTrackerApp(state = initialState, action) {
                 achievements: newAchievements
             }
         case actions.CHANGE_DATE:
+            let newPrevDaysMeals = [...state.prevDaysMeals]
+            if (state.meals.length) newPrevDaysMeals.push({ date: state.date, meals: [...state.meals] })
             return {
                 date: action.date,
                 meals: [],
                 achievements: initialState.achievements.map(a => ({ ...a })),
-                prevDaysMeals: {
-                    ...state.prevDaysMeals,
-                    date: { ...state.meals },
-                }
+                prevDaysMeals: newPrevDaysMeals,
             }
         default:
             return state

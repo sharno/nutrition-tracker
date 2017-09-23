@@ -1,5 +1,6 @@
 import React from 'react'
 import { Menu, Container, Image } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 import moment from 'moment'
 
 const TopMenu = ({ date }) => (
@@ -13,8 +14,8 @@ const TopMenu = ({ date }) => (
                 />
                 Nutrition Tracker
             </Menu.Item>
-            <Menu.Item as='a'>Food Today</Menu.Item>
-            <Menu.Item as='a'>Your Food History</Menu.Item>
+            <Menu.Item as={NavLink} exact to='/'>Food Today</Menu.Item>
+            <Menu.Item as={NavLink} to='/history'>Your Food History</Menu.Item>
 
             <Menu.Menu position='right'>
                 <Menu.Item as='label'>{moment(date).format("LL")}</Menu.Item>

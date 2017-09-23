@@ -6,6 +6,7 @@ import NutritionTracker from '../components/NutritionTracker'
 const mapStateToProps = state => {
     return {
         date: state.date,
+        prevDaysMeals: state.prevDaysMeals,
     }
 }
 
