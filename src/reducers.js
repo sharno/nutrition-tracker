@@ -45,7 +45,9 @@ export default function nutritionTrackerApp(state = initialState, action) {
             }
         case actions.CHANGE_DATE:
             return {
-                meals: {},
+                date: action.date,
+                meals: [],
+                achievements: initialState.achievements.map(a => ({ ...a })),
                 prevDaysMeals: {
                     ...state.prevDaysMeals,
                     date: { ...state.meals },

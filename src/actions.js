@@ -19,6 +19,6 @@ export function addMeal(meal) {
     return { type: ADD_MEAL, meal }
 }
 
-export function changeDate(newDate) {
-    return { type: CHANGE_DATE, newDate }
+export function changeDate(date) {
+    return { type: CHANGE_DATE, date }
 }

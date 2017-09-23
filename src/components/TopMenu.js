@@ -1,10 +1,11 @@
 import React from 'react'
-import { Menu, Container, Image, Dropdown } from 'semantic-ui-react'
+import { Menu, Container, Image } from 'semantic-ui-react'
+import moment from 'moment'
 
-const TopMenu = () => (
+const TopMenu = ({ date }) => (
     <Menu fixed='top' inverted>
         <Container>
-            <Menu.Item as='a' header>
+            <Menu.Item header>
                 <Image
                     size='mini'
                     src='/assets/images/meal.png'
@@ -12,25 +13,12 @@ const TopMenu = () => (
                 />
                 Nutrition Tracker
             </Menu.Item>
-            <Menu.Item as='a'>Home</Menu.Item>
+            <Menu.Item as='a'>Food Today</Menu.Item>
+            <Menu.Item as='a'>Your Food History</Menu.Item>
 
-            <Dropdown item simple text='Dropdown'>
-                <Dropdown.Menu>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Header>Header Item</Dropdown.Header>
-                    <Dropdown.Item>
-                        <i className='dropdown icon' />
-                        <span className='text'>Submenu</span>
-                        <Dropdown.Menu>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                            <Dropdown.Item>List Item</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown.Item>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+            <Menu.Menu position='right'>
+                <Menu.Item as='label'>{moment(date).format("LL")}</Menu.Item>
+            </Menu.Menu>
         </Container>
     </Menu>
 )
