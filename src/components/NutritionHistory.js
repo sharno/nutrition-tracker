@@ -2,6 +2,8 @@ import React from 'react'
 import { Container, Accordion, List, Image } from 'semantic-ui-react'
 import moment from 'moment'
 
+import logo from '../assets/images/meal.png';
+
 const NutritionHistory = ({ prevDaysMeals }) => {
     return (
         <div>
@@ -18,7 +20,7 @@ const preparePanels = (prevDaysMeals) => {
         content: (
             <List divided horizontal>
                 {d.meals.map(m => <List.Item key={m.time}>
-                    <Image avatar src={m.img || "/assets/images/meal.png"} />
+                    <Image avatar src={m.img || logo} />
                     <List.Content>
                         {m.name}
                     </List.Content>

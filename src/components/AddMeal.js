@@ -3,6 +3,8 @@ import { Button, Segment, Checkbox, Image, Modal, Form, Message } from 'semantic
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
+import logo from '../assets/images/meal.png';
+
 export default class AddMeal extends Component {
     state = {
         name: "",
@@ -114,7 +116,7 @@ export default class AddMeal extends Component {
             <Modal trigger={<Button primary onClick={this.handleOpenModal}>Add a New Meal</Button>} open={this.state.openModal} onClose={this.handleCloseModal}>
                 <Modal.Header>Add a New Meal</Modal.Header>
                 <Modal.Content image scrolling>
-                    <Image wrapped size='medium' src={this.state.img || '/assets/images/meal.png'} />
+                    <Image wrapped size='medium' src={this.state.img || logo} />
                     <Modal.Description>
                         <Form error={this.state.error !== ""}>
                             <Segment.Group>

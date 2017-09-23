@@ -3,13 +3,15 @@ import { Menu, Container, Image } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import moment from 'moment'
 
+import logo from '../assets/images/meal.png';
+
 const TopMenu = ({ date }) => (
     <Menu fixed='top' inverted>
         <Container>
             <Menu.Item header>
                 <Image
                     size='mini'
-                    src='/assets/images/meal.png'
+                    src={logo}
                     style={{ marginRight: '1.5em' }}
                 />
                 Nutrition Tracker

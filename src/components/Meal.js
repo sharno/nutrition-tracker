@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import { Item, Label } from 'semantic-ui-react'
 import moment from 'moment'
 
+import logo from '../assets/images/meal.png';
+
 const Meal = ({ name, img, time, serving }) => (
     <Item>
-        <Item.Image src={img || '/assets/images/meal.png'} />
+        <Item.Image src={img || logo} />
 
         <Item.Content>
             <Item.Header>{name}</Item.Header>
