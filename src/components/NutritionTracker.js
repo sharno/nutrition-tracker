@@ -30,9 +30,9 @@ class NutritionTracker extends Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <Route path="%PUBLIC_URL%/" render={() => <TopMenu date={this.props.date} />} />
-                        <Route exact path="%PUBLIC_URL%/" render={() => <Home {...this.props} />} />
-                        <Route exact path="%PUBLIC_URL%/history" render={() => <NutritionHistory prevDaysMeals={this.props.prevDaysMeals} />} />
+                        <Route path={process.env.PUBLIC_URL + "/"} render={() => <TopMenu date={this.props.date} />} />
+                        <Route exact path={process.env.PUBLIC_URL + "/"} render={() => <Home {...this.props} />} />
+                        <Route exact path={process.env.PUBLIC_URL + "/history"} render={() => <NutritionHistory prevDaysMeals={this.props.prevDaysMeals} />} />
                     </div>
                 </BrowserRouter>
 
