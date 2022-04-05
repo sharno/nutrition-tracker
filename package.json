@@ -4,7 +4,7 @@
   "homepage": "http://sharno.github.io/nutrition-tracker",
   "private": true,
   "dependencies": {
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-redux": "^5.0.6",
