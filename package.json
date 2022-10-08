@@ -4,15 +4,16 @@
   "homepage": "http://sharno.github.io/nutrition-tracker",
   "private": true,
   "dependencies": {
-    "moment": "^2.18.1",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
+    "moment": "^2.29.4",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.13",
+    "react-scripts": "5.0.0",
     "redux": "^3.7.2",
-    "semantic-ui-react": "^0.73.1"
+    "semantic-ui-react": "^0.73.1",
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,12 +21,15 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "devDependencies": {
     "enzyme": "^2.9.1",
     "gh-pages": "^1.0.0",
     "react-dom": "^15.6.1",
     "react-test-renderer": "^15.6.1"
-  }
+  },
+  "snyk": true
 }
