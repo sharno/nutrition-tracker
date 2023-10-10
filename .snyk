@@ -10,3 +10,7 @@ patch:
         path: >-
           react-scripts > webpack > watchpack > chokidar > fsevents >
           node-pre-gyp > tar-pack > debug
+    - react-scripts > webpack-dev-server > sockjs-client > debug:
+        patched: '2023-10-10T02:13:56.664Z'
+        id: 'npm:debug:20170905'
+        path: react-scripts > webpack-dev-server > sockjs-client > debug
